@@ -1,5 +1,6 @@
 from flask import Flask
 import requests
+import sampleModule
 
 app = Flask(__name__)
 
@@ -16,4 +17,6 @@ def getKeys(path):
             return ""
 
 if __name__ == "__main__":
+    sampleModule.printTest()
     app.run(host='0.0.0.0', port=8000)
+    

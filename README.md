@@ -7,3 +7,6 @@
   * sudo easy_install pip
 * python3 -m pip install flask
 * python3 -m pip install requests
+
+## Running
+* python3 server.py
