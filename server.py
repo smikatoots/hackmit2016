@@ -12,6 +12,10 @@ def getKeys(path):
 verificationToken = getKeys("config/secrets")[0]
 pageAccessToken = getKeys("config/secrets")[1]
 
+@app.route("/mozart/test", methods=["GET"])
+def processTest():
+    return "done"
+
 @app.route("/mozart/access", methods=["GET"])
 def process():
     if request.args.get("hub.verify_token", "") == verificationToken:
@@ -20,7 +24,7 @@ def process():
         return "Error, wrong validation token"
 
 
-app.route('/mozart/access', methods=['POST'])
+@app.route('/mozart/access', methods=['POST'])
 def handle_messages():
     payload = request.get_data()
     print(payload)
@@ -36,7 +40,7 @@ def process_events(payload):
         if "message" in event and "text" in event["message"]:
             yield event["sender"]["id"], event["message"]["text"].encode('unicode_escape')
         else:
-            yield event["sender"]["id"], "I can't echo this"
+            yield event["sender"]["id"], "I can't echo this" 
 
 def send_message(token, recipient, text):
     r = requests.post("https://graph.facebook.com/v2.6/me/messages",
