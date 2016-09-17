@@ -7,7 +7,8 @@ import sampleModule
 
 app = Flask(__name__)
 
-
+verificationToken = "mozart_verification"
+token = "EAAduIpA2oNMBANEb4HonZBtUlE5CBiZAEd2ZCH152NLM4gN9ynFAVHmcaw6Ckif0YDbEwJUwSWppmVN8bJ4I0BCUmBpDkQG0n6KjIlvxyp6882a7X0L69ZCO6Lb0ZAmifQELQSebcdFZAORCzOZCk8Wbuu6wOB8nqE8zF6J0pg8SgZDZD"
 
 @app.route('/', methods=['GET', 'POST'])
 def webh():
