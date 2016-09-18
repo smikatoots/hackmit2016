@@ -7,6 +7,7 @@ import sampleModule
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 # API access
 from urllib.request import urlopen
 import json
@@ -35,6 +36,12 @@ def amadeus_search(origin, destination, departure_date, price, airline):
         print (item['destination'], item['departure_date'], item['return_date'], item['price'], item['airline'])
 
 #Bot takes user input and parses it
+=======
+verificationToken = "mozart_verification"
+token = "EAAduIpA2oNMBANEb4HonZBtUlE5CBiZAEd2ZCH152NLM4gN9ynFAVHmcaw6Ckif0YDbEwJUwSWppmVN8bJ4I0BCUmBpDkQG0n6KjIlvxyp6882a7X0L69ZCO6Lb0ZAmifQELQSebcdFZAORCzOZCk8Wbuu6wOB8nqE8zF6J0pg8SgZDZD"
+
+loopIndex = 0
+>>>>>>> 517195bb9effbf7bf8fad48c85d5b5c3f4b9af4d
 
 @app.route('/', methods=['GET', 'POST'])
 def webh():
@@ -48,7 +55,19 @@ def webhook():
       text = data['entry'][0]['messaging'][0]['message']['text'] # Incoming Message Text
       sender = data['entry'][0]['messaging'][0]['sender']['id'] # Sender ID
 
+<<<<<<< HEAD
       payload = {'recipient': {'id': sender}, 'message': {'text': "Hello World"}} # We're going to send this back
+=======
+      message = ""
+      if loopIndex == 0:
+        message = "Hello Welcome to Mozart Travels! Please enter an origin and destination in the format <origin><destination>! For instance: Chicago,Boston"
+        loopIndex++
+      if loopIndex == 1:
+        message = text
+        loopIndex = 0
+
+      payload = {'recipient': {'id': sender}, 'message': {'text': message}} # We're going to send this back
+>>>>>>> 517195bb9effbf7bf8fad48c85d5b5c3f4b9af4d
 
       r = requests.post('https://graph.facebook.com/v2.7/me/messages/?access_token=' + token, json=payload) # Lets send it
     except Exception as e:
