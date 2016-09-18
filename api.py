@@ -17,7 +17,6 @@ def amadeus_search(query):
     url = 'https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey='+ api_key
     origin = query #if we only search with origin
     final_url = url + "&origin=" + origin
-    print(final_url)
     json_obj = urlopen(final_url).read().decode('UTF-8')
     data = json.loads(json_obj)
 
